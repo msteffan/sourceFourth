@@ -1,3 +1,7 @@
+# SourceFourth
+
+SourceFourth is a CRM made with journalists in mind.
+
 ## The Problem
 
 52% of journalists produce at least 5 stories a week—with 20% of them producing 11 or more stories a week! Let’s imagine that each story has 3 unique sources, minimum. In that case, a single journalist could be juggling relationships with 33 sources in a single week. In addition, journalists also maintain active relationships with PR and communications professionals on their beat, attend events and network, and pursue long-term projects not related to their day-to-day coverage. All things considered, a single journalist might accrue, contact, and leverage the expertise of 50+ people in a week.
