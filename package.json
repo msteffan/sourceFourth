@@ -1,0 +1,29 @@
+{
+  "name": "sourcefourth",
+  "version": "1.0.0",
+  "description": "SourceFourth is a CRM made with journalists in mind.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msteffan/sourceFourth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msteffan/sourceFourth/issues"
+  },
+  "homepage": "https://github.com/msteffan/sourceFourth#readme",
+  "dependencies": {
+    "angular": "^1.4.5",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "method-override": "^2.3.5",
+    "pg": "^4.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.6.0"
+  }
+}
