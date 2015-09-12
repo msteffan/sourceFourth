@@ -1,8 +1,5 @@
 var Sequelize = require("sequelize");
 var sequelize = new Sequelize("postgres:///sourthForth");
-//required for linux migration
-// var sequelize = new Sequelize('postgres://sequelize_user:sequelize_password@localhost:5432/playlistr_db');
-
 
 if (process.env.DATABASE_URL) {
   // the application is executed on Heroku ... use the postgres database

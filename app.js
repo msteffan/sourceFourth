@@ -26,10 +26,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use("/", express.static(path.join(__dirname + "/public")));
+// app.use("/", usersController);
+// app.use("/", playlistsController);
 
 app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
+     res.sendFile(__dirname + "/public/index.html");
+    // load the single view file (angular will handle the page changes on the front-end)
+});
 
 var fs = require("fs")
 if (fs.existsSync("./env.js")){
