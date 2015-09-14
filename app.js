@@ -10,10 +10,10 @@ var methodOverride = require('method-override');
 var db = require("./db/connection");
 var pg = require('pg');
 var usersController = require("./controllers/users");
-var contactsController = require("./controllers/contacts");
+var sourcesController = require("./controllers/sources");
 
 app.use("/", usersController);
-app.use("/", contactsController);
+app.use("/", sourcesController);
 
 pg.connect(process.env.DATABASE_URL, function(err, client) {
   if (err) throw err;

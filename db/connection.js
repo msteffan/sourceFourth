@@ -14,16 +14,16 @@ if (process.env.DATABASE_URL) {
 }
 
 var User = sequelize.import("../models/user");
-var Contact = sequelize.import("../models/Contact");
+var Source = sequelize.import("../models/source");
 
-Contact.belongsTo(User);
-User.hasMany(Contact);
+Source.belongsTo(User);
+User.hasMany(Source);
 
 module.exports = {
   Sequelize: Sequelize,
   sequelize: sequelize,
   models: {
     User: User,
-    Contact: Contact
+    Source: Source
   }
 }
