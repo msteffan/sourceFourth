@@ -49,47 +49,51 @@ app.get('/', function(req, res) {
 // }
 
 var passport = require("passport");
-var Strategy = require("passport-http").DigestStrategy;
-passport.use(new Strategy({ qop: 'auth' },
-  function(username, password, cb) {
+var LocalStrategy = require("passport-local").Strategy;
+passport.use(new LocalStrategy({},
+  function(username, password, done) {
+      //console.log(username, password);
       db.models.User.findOrCreate({where: {
           username: username,
-          password: password
+          password: password,
+         // session: true
       }}).then(function(err, user) {
-        //   console.log(user);
-        if (err) { return cb(err); }
-        if (!user) { return cb(null, false); }
-        if (user.password != password){
-            return cb(null, false);
-        }
-        return cb(null, user);
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        if (user.password != password){ return done(null, false); };
+        return done(null, user);
     });
 }));
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
+  done(null, user.id);
 });
 
-app.use(passport.initialize())
-app.use(passport.session())
-
-app.get('/auth',
-  passport.authenticate('basic', { session: true }),
-  function(req, res) {
-    res.json({ username: req.user.username, email: req.user.emails[0].value });
+passport.deserializeUser(function(id, cb) {
+  db.models.User.findById(id, function (err, user) {
+    if (err) { return cb(err); }
+    cb(null, user);
   });
+});
 
-app.get("/signout", function(req, res){
-  req.session.destroy()
-  res.redirect("/")
-})
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.get("/", function(req, res){
-//   res.render("index", {})
-// });
+app.post('/login', passport.authenticate('local', {}),
+  function(req, res) {
+      console.log(req);
+      res.send("i worked")
+    //res.redirect('/');
+  }
+);
+
+app.get('/logout',
+    function(req, res){
+      req.logout();
+      res.redirect('/');
+  }
+);
+
 
   app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

@@ -6,11 +6,17 @@
       this.createUser = function(){
           var user = {
               username: $scope.user.username,
-              pass: $scope.user.password
+              password: $scope.user.password
           }
-          User.save({}, {name: user.username, pass: user.pass}, function(user){
+          console.log(user);
+          $http.post("/login", {username: user.username, password: user.password}).then(function(response){
+              console.log(response);
+          })
 
-           })
+          //}
+          //User.save({}, {name: user.username, pass: user.pass}, function(user){
+
+          // })
       }
   }]);
 

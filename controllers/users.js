@@ -17,20 +17,18 @@ router.get("/users", function(req, res){
 });
 
 //GET specific user
-// router.get("/users/:id", function(req, res) {
-//   User.findById(req.params.id).then(function(user){
-//       res.send()
-//     // if(!user) return error(res, "not found");
-//     // res.render("users/show.hbs", {});
-//
-//   });
-// });
+router.get("/users/:id", function(req, res) {
+  User.findById(req.params.id).then(function(user){
+      res.send(user)
+      if(!user) return error(res, "not found");
+  });
+});
 
 // //CREATE new user
 router.post("/users", function(req,res){
     var user = {
-        name: req.query.name,
-        pass: req.query.pass
+        username: req.query.username,
+        password: req.query.password
     };
   User.create(user).then(function(user, err){
       if(err){

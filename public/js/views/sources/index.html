@@ -1,4 +1,126 @@
 <div>
-    hello again!
+    <h1>SourceFourth Demo</h2>
 
+    	<form>
+    		<input id="searchInput" type="text" placeholder="Search for a source by name, profession, or location"></input>
+    	</form>
+    	<div id="header"></div>
+    	<div class="honeycombs" id="list">
+    		<div class="comb"
+         data-toggle="modal"
+         data-target="#basicModal">
+    			<div class="front-content">
+    				<p class="source">Melissa Steffan</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="phone">(206) 498-7863</p>
+    			</div>
+    		</div>
+
+
+
+
+
+
+    		<div class="comb">
+    			<div class="front-content">
+    				<p class="source">I am a front title</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="source">I am a back title</p>
+    			</div>
+    		</div>
+    		<div class="comb">
+    			<div class="front-content">
+    				<p class="source">I am a front title</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="source">I am a back title</p>
+    			</div>
+    		</div>
+    		<div class="comb">
+    			<div class="front-content">
+    				<p class="source">I am a front title</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="source">I am a back title</p>
+    			</div>
+    		</div>
+    		<div class="comb">
+    			<div class="front-content">
+    				<p class="source">I am a front title</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="source">I am a back title</p>
+    			</div>
+    		</div>
+    		<div class="comb">
+    			<div class="front-content">
+    				<p class="source">I am a front title</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="source">I am a back title</p>
+    			</div>
+    		</div>
+    		<div class="comb">
+    			<div class="front-content">
+    				<p class="source">I am a front title</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="source">I am a back title</p>
+    			</div>
+    		</div>
+    		<div class="comb">
+    			<div class="front-content">
+    				<p class="source">I am a front title</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="source">I am a back title</p>
+    			</div>
+    		</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel">Source Name</h4>
+      </div>
+      <div class="modal-body">
+          <h3>Source Title/profession</h3>
+          <p class="source">Phone Number</p>
+          <p class="source">Email address</p>
+          <p class="source">Other info</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+</div>
+</div>
+<script>
+    $(document).ready(function() {
+    $('.honeycombs').honeycombs({
+        combWidth:200,
+        margin: -20,
+        threshold: 3
+    });
+    $("input").keyup(function(){
+       // Retrieve the input field text and reset the count to zero
+       var filter = $(this).val();
+       // Loop through the comment list
+       $(".source").each(function(){
+           // If the list item does not contain the text phrase fade it out
+           if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+               console.log(this);
+                $(this).closest(".comb").fadeOut();
+           // Show the list item if the phrase matches
+           } else {
+               $(this).closest(".comb").show();
+           }
+       });
+    });
+
+   });
+</script>
