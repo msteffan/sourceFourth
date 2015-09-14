@@ -24,6 +24,8 @@
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "method-override": "^2.3.5",
+    "passport": "^0.3.0",
+    "passport-http": "^0.3.0",
     "pg": "^4.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.6.0"

@@ -5,7 +5,10 @@
     'ngRoute',
     'ngResource',
     'sourceControllers',
+    'userControllers',
     'sourceRouter',
-    'sourceServices'
+    // 'userRouter',
+    'sourceServices',
+    'userServices'
   ]);
 })()

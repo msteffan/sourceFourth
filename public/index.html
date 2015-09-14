@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="sourceFourth">
     <head>
         <title>SourceFourth</title>
         <!-- <link rel="stylesheet" href="/style.css"> -->
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-resource.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.min.js"></script>
         <!-- <script src="../bower_components/angular/angular.min.js"></script> -->
         <!-- <script src="../bower_components/angular-route/angular-route.js"></script> -->
         <!-- <script src="../bower_components/angular-resource/angular-resource.js"></script> -->
@@ -12,13 +14,16 @@
         <!-- <script src="../bower_components/angularfire/dist/angularfire.min.js"></script> -->
         <script src="js/app.js"></script>
         <script src="js/routes.js"></script>
-        <script src="js/controllers/contacts.js"></script>
-        <script src="js/services/contact.js"></script>
-        <link rel="icon"
+        <script src="js/controllers/sources.js"></script>
+        <script src="js/controllers/users.js"></script>
+        <script src="js/services/source.js"></script>
+        <script src="js/services/user.js"></script>
+        <!-- <link rel="icon"
           type="image/png"
-          href="/img/favicon.png">
+          href="/img/favicon.png"> -->
    </head>
    <body>
        <h1>Hello, World!</h1>
+       <div ng-view></div>
   </body>
 </html>
