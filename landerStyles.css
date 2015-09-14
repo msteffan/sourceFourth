@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #303332;
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: black;
+}
+.nav {
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    /*position: absolute;
+    top: 0;*/
+}
+.login-button{
+    float: right;
+    margin-right: 10px;
+
+}
+.small-signup{
+    float: right;
+    margin-right: 10px;
+
+}
+#logo {
+    height: 200px;
+    width: 200px;
+    float: left;
+    margin-left: 10%;
+    position: absolute;
+    /*margin-left: 200px;*/
+}
+#phone {
+    height: 200px;
+    width: 200px;
+    float: left;
+    margin-left: 10%;
+    /*position: absolute;*/
+}
+.first-hero {
+    height: 200px;
+    margin-bottom: 30px;
+}
+.app-name-container {
+    /*display: block;
+    margin: 0 auto;*/
+    float: left;
+    margin-left: 35%;
+
+    text-align: center;
+
+}
+.app-name {
+    color: #62CD8C;
+    font-size: 6em;
+}
+.span1 {
+    color: #ED462F;
+}
+.span2 {
+    color: #F39631;
+}
+.span3 {
+    color: #F8BE75;
+}
+.span4 {
+    color: #48AAAC;
+}
+.description-container {
+    width: 100%;
+    height: 200px;
+}
+.app-description {
+    float: left;
+    display: block;
+    font-size: 1.5em;
+    margin-left: 10%;
+    line-height: 150%;
+    color: #62CD8C;
+    width: 40%;
+}
+.signup-button {
+    clear: left;
+    display: block;
+    margin: 0 auto;
+    height: 75px;
+    width: 150px;
+    /*float: left;
+
+    margin-left: 10%;*/
+
+}
+/*#basicModal {
+    background-color: red;
+}*/
+.modal-title{
+    font-size: 3.4em;
+    text-align: center;
+
+}
+.modal-content {
+   background-color: #303332;
+   border: 5px solid #62CD8C;
+   padding: 50px;
+   color:  #62CD8C;
+}
+.modal-backdrop {
+    background-color: #303332;
+
+}
+.modal-label {
+    font-size: 2em;
+    padding-bottom: 15px;
+}
+input[type="text"],input[type="password"] {
+    width: 95%;
+    display: block;
+    margin: 0 auto 50px auto;
+    border-radius: 15px;
+    height: 55px;
+    font-size: 1.5em;
+    background-color: #303332;
+    color: #F8BE75;
+    padding: 10px;
+    border: 2px solid #62CD8C;
+}
+::-webkit-input-placeholder {
+   color: #F8BE75;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #F8BE75;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #F8BE75;  
+}
+
+:-ms-input-placeholder {
+   color: #F8BE75;  
+}

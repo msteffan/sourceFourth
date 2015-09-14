@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="sourceFourth">
+    <head>
+        <title>SourceFourth</title>
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="landerStyles.css" />
+   </head>
+   <body>
+       <div class="nav">
+           <img src="#" alt="Login Button" class="login-button">
+           <img src="#" alt="Sign Up Button" class="small-signup"  data-toggle="modal"
+            data-target="#basicModal">
+       </div>
+       <div class="hero">
+           <div class="first-hero">
+               <img src="" alt="logo" id="logo" />
+               <div class="app-name-container">
+                   <h1 class="app-name">SourceFourth</h1>
+                   <h2><span class="span1">Source</span>
+                        <span class="span2">management</span>
+                        <span class="span3">for</span>
+                        <span class="span4">journalists.</class>
+                    </h2>
+                </div>
+            </div>
+            <div class="app-info">
+                <img src="" alt="image of phone" id="phone"/>
+                <div class="description-container">
+                    <h4 class="app-description">You protect all of your sources...but does your software protect them? SourceFourth offers serious journalists a serious solution to contact management for today's story demands.</h4>
+                    <img src="" alt="sign up button" class="signup-button"/>
+                </div>
+            </div>
+       </div>
+
+
+       <!-- signup Modal -->
+       <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+             <h4 class="modal-title" id="myModalLabel">Create An Account</h4>
+             </div>
+             <div class="modal-body">
+                <form method="post" action="/signup">
+                    <h4 class="modal-label">Sign up with an email address.</h4>
+                    <input type="text" name="username" placeholder="Username">
+                    <h4 class="modal-label"> Create a password.</h4>
+                    <input type="password" name="password" placeholder="password">
+                    <img src="" alt="sign up button" class="signup-button"/>
+                </form>
+             </div>
+             <!-- <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+         </div>
+       </div>
+       </div>
+       </div>
+
+
+
+
+  </body>
+</html>
