@@ -26,10 +26,12 @@ router.get("/users/:id", function(req, res) {
 
 // //CREATE new user
 router.post("/users", function(req,res){
+    console.log(req);
     var user = {
         username: req.query.username,
         password: req.query.password
     };
+    console.log(user);
   User.create(user).then(function(user, err){
       if(err){
           console.log(err);

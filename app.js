@@ -50,20 +50,40 @@ app.get('/', function(req, res) {
 
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
-passport.use(new LocalStrategy({},
+// passport.use(new LocalStrategy({},
+//   //   function(username, password, cb) {
+//   //   db.models.User.findByUsername(username, function(err, user) {
+//   //     if (err) { return cb(err); }
+//   //     if (!user) { return cb(null, false); }
+//   //     if (user.password != password) { return cb(null, false); }
+//   //     return cb(null, user);
+//   //   });
+//   // }));
+//   function(username, password, done) {
+//       //console.log(username, password);
+//       db.models.User.findOrCreate({where: {
+//           username: username,
+//           password: password,
+//          // session: true
+//       }}).then(function(err, user) {
+//         if (err) { return done(err); }
+//         if (!user) { return done(null, false); }
+//         if (user.password != password){ return done(null, false); };
+//         return done(null, user);
+//     });
+// }));
+
+passport.use(new LocalStrategy(
   function(username, password, done) {
-      //console.log(username, password);
-      db.models.User.findOrCreate({where: {
-          username: username,
-          password: password,
-         // session: true
-      }}).then(function(err, user) {
+    db.models.User.findOrCreate({where:{ username: username, password: password } }).then(function(response, err){
         if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (user.password != password){ return done(null, false); };
-        return done(null, user);
+        if (!response[0].dataValues.user) { return done(null, false); }
+        if (user.password != !response[0].dataValues.password) { return done(null, false); }
+     // return cb(null, user);
+      return done(null, response[0].dataValues);
     });
-}));
+  }
+));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -81,7 +101,6 @@ app.use(passport.session());
 
 app.post('/login', passport.authenticate('local', {}),
   function(req, res) {
-      console.log(req);
       res.send("i worked")
     //res.redirect('/');
   }

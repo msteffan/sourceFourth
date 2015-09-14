@@ -9,15 +9,23 @@
               password: $scope.user.password
           }
           console.log(user);
-          $http.post("/login", {username: user.username, password: user.password}).then(function(response){
-              console.log(response);
+
+          User.save({}, {username: user.username, password: user.password}, function(user){
+              console.log(user);
           })
-
-          //}
-          //User.save({}, {name: user.username, pass: user.pass}, function(user){
-
-          // })
       }
+      this.authenticate = function(){
+          var user = {
+              username: $scope.user.username,
+              password: $scope.user.password
+          }
+          console.log(user);
+          $http.post("/login", {username: user.username, password: user.password}).then(function(response){
+                console.log(response);
+            })
+
+        }
+    //  }
   }]);
 
 
