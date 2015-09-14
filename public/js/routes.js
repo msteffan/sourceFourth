@@ -29,10 +29,11 @@
         templateUrl: 'js/views/users/new.html',
         controller: 'newUserController',
         controllerAs: 'userCtrl'
-      }).
-      otherwise({
-        redirectTo: "/sources"
       })
+    //   .
+    //   otherwise({
+    //     redirectTo: "/sources"
+    //   })
     }
   ])
 

@@ -2,15 +2,16 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var session = require("express-session");
-app.use(session({
-  secret: "some secret"
-}))
 var bodyParser = require("body-parser");
+var bcrypt = require("bcrypt-nodejs");
 var methodOverride = require('method-override');
 var db = require("./db/connection");
 var pg = require('pg');
 var usersController = require("./controllers/users");
 var sourcesController = require("./controllers/sources");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+
 
 app.use("/", usersController);
 app.use("/", sourcesController);
@@ -26,17 +27,31 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
   //   });
 });
 
-
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(require("cookie-parser")())
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser());
+app.use(session({
+  secret: "some secret"
+}));
 app.use(methodOverride('_method'));
 app.use("/", express.static(path.join(__dirname + "/public")));
+//app.set("view engine", "hbs")
+
+app.use(function(req, res, callback){
+    console.log(req);
+    if(req.user){
+        res.locals.currentUser = req.user.username;
+    }
+    //console.log(res.locals.currentUser);
+    callback()
+})
 
 app.get('/', function(req, res) {
-     res.sendFile(__dirname + "/public/index.html");
+      res.sendFile(__dirname + "/public/index.html");
+    //res.render("index", {})
     // load the single view file (angular will handle the page changes on the front-end)
-    res.set('Content-Type', 'application/json');
+    //res.set('Content-Type', 'application/json');
 });
 
 // var fs = require("fs")
@@ -48,50 +63,29 @@ app.get('/', function(req, res) {
 //  var env = process.env;
 // }
 
-var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
-// passport.use(new LocalStrategy({},
-//   //   function(username, password, cb) {
-//   //   db.models.User.findByUsername(username, function(err, user) {
-//   //     if (err) { return cb(err); }
-//   //     if (!user) { return cb(null, false); }
-//   //     if (user.password != password) { return cb(null, false); }
-//   //     return cb(null, user);
-//   //   });
-//   // }));
-//   function(username, password, done) {
-//       //console.log(username, password);
-//       db.models.User.findOrCreate({where: {
-//           username: username,
-//           password: password,
-//          // session: true
-//       }}).then(function(err, user) {
-//         if (err) { return done(err); }
-//         if (!user) { return done(null, false); }
-//         if (user.password != password){ return done(null, false); };
-//         return done(null, user);
-//     });
-// }));
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    db.models.User.findOrCreate({where:{ username: username, password: password } }).then(function(response, err){
-        if (err) { return done(err); }
-        if (!response[0].dataValues.user) { return done(null, false); }
-        if (user.password != !response[0].dataValues.password) { return done(null, false); }
-     // return cb(null, user);
-      return done(null, response[0].dataValues);
+passport.use(new LocalStrategy(function(username, pass, callback){
+    db.models.User.findOne({where: { username: username }
+    }).then(function(user, err){
+        if(err){
+            return callback(err)
+        }
+        if (!user){
+            return callback(null, false);
+        }
+        if (!bcrypt.compareSync(pass, user.password)){
+            return callback (null, false)
+        }
+        return callback(null, user)
     });
-  }
-));
+}))
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, cb) {
-  db.models.User.findById(id, function (err, user) {
-    if (err) { return cb(err); }
+passport.deserializeUser(function(id, cb){
+  db.models.User.findById(id).then(function(user){
     cb(null, user);
   });
 });
@@ -99,19 +93,45 @@ passport.deserializeUser(function(id, cb) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/login', passport.authenticate('local', {}),
-  function(req, res) {
-      res.send("i worked")
-    //res.redirect('/');
-  }
-);
+app.post('/signup', function(req, res, next){
+    db.models.User.findOne({
+        where: {
+            username: req.body.username
+        }
+    }).then(function(user){
+        if(!user){
+            db.models.User.create({
+                username: req.body.username,
+                password: bcrypt.hashSync(req.body.password)
+            }).then(function(user){
+                passport.authenticate("local", {
+                    failureRedirect: "/",
+                    successRedirect: "/#/sources"
+                })(req, res, next)
+            })
+        } else {
+            res.send("user exists!")
+        }
+    })
+});
 
-app.get('/logout',
+
+
+
+app.post("/signin", passport.authenticate("local", {
+    failureRedirect: "/",
+    successRedirect: "/#/sources"
+}));
+
+app.get('/signout',
     function(req, res){
-      req.logout();
+      req.session.destroy();
       res.redirect('/');
   }
 );
+
+
+
 
 
   app.listen(process.env.PORT || 3000, function(){

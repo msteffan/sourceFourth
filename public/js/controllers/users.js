@@ -20,7 +20,7 @@
               password: $scope.user.password
           }
           console.log(user);
-          $http.post("/login", {username: user.username, password: user.password}).then(function(response){
+          $http.post("/signup", {username: user.username, password: user.password}).then(function(response){
                 console.log(response);
             })
 

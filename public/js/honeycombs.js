@@ -1,4 +1,5 @@
 (function($) {
+
     $.fn.honeycombs = function(options) {
 
         // Establish our default settings

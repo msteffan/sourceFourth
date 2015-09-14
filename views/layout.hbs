@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="sourceFourth">
+<html>
     <head>
         <title>SourceFourth</title>
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -27,7 +27,25 @@
           href="/img/favicon.png"> -->
    </head>
    <body>
-       <div ng-view></div>
+       {{#if currentUser}}
+        <ng-app="sourceFourth">
+           Welcome User!
+           <a href="/signout">Sign out</a>
+           <div ng-view></div>
+        {{ else }}
+           <h2>Sign In</h2>
+
+           <form method="post" action="/signin">
+             <input type="text" name="username" placeholder="Username">
+             <input type="password" name="password" placeholder="password">
+             <button>Sign In</button>
+           </form>
+
+        {{/if}}
+       </div>
+
+
+
 
 
 
