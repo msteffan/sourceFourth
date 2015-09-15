@@ -9,8 +9,11 @@
         <script src="/js/honeycombs.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="/css/lander.css" />
         <link rel="stylesheet" type="text/css" href="/css/honeycombs.css" />
+
         <!-- <script src="../bower_components/angular/angular.min.js"></script> -->
         <!-- <script src="../bower_components/angular-route/angular-route.js"></script> -->
         <!-- <script src="../bower_components/angular-resource/angular-resource.js"></script> -->
@@ -26,29 +29,88 @@
           type="image/png"
           href="/img/favicon.png"> -->
    </head>
+   <div class="nav">
+       {{#if currentUser}}
+           <p>Welcome, {{currentUser}}.</p>
+           <a href="/signout">Sign out</a>
+       {{else}}
+           <img src="#" alt="Login Button" class="login-button" data-toggle="modal"
+        data-target="#signInModal">
+           <img src="#" alt="Sign Up Button" class="small-signup"  data-toggle="modal"
+        data-target="#signUpModal">
+       {{/if}}
+   </div>
    <body>
        {{#if currentUser}}
-        <div ng-app="sourceFourth">
-           Welcome User!
-           <a href="/signout">Sign out</a>
-           <div ng-view></div>
-        </div>
+          <div ng-app="sourceFourth">
+             <div ng-view></div>
+          </div>
         {{ else }}
-           <h2>Sign In</h2>
+           <div class="hero">
+           <div class="first-hero">
+               <img src="" alt="logo" id="logo" />
+               <div class="app-name-container">
+                   <h1 class="app-name">SourceFourth</h1>
+                   <h2><span class="span1">Source</span>
+                        <span class="span2">management</span>
+                        <span class="span3">for</span>
+                        <span class="span4">journalists.</class>
+                    </h2>
+                </div>
+            </div>
+            <div class="app-info">
+                <img src="" alt="image of phone" id="phone"/>
+                <div class="description-container">
+                    <h4 class="app-description">You protect all of your sources...but does your software protect them? <span class="emphasis">SourceFourth</span> offers serious journalists a serious solution to contact management for today's story demands.</h4>
+                    <img src="" alt="sign up button" class="signup-button"/>
+                </div>
+            </div>
+       </div>
 
-           <form method="post" action="/signin">
-             <input type="text" name="username" placeholder="Username">
-             <input type="password" name="password" placeholder="password">
-             <button>Sign In</button>
-           </form>
+
+<!-- signup Modal -->
+       <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Create An Account</h4>
+                 </div>
+                 <div class="modal-body">
+                    <form method="post" action="/signup">
+                        <h4 class="modal-label">Sign up with an <span class="emphasis">email address.</span></h4>
+                        <input type="text" name="username" placeholder="Username">
+                        <h4 class="modal-label"> Create a <span class="emphasis">password</span>.</h4>
+                        <input type="password" name="password" placeholder="password">
+                        <input type="submit" value="Do something"></input>
+                        <img src="" alt="sign up button" class="signup-button"/>
+                    </form>
+                 </div>
+             </div>
+           </div>
+       </div>
+
+       <!-- signin Modal -->
+              <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Access Your Account</h4>
+                        </div>
+                        <div class="modal-body">
+                           <form method="post" action="/signin">
+                               <h4 class="modal-label">Username</h4>
+                               <input type="text" name="username" placeholder="Username">
+                               <h4 class="modal-label"> Password</h4>
+                               <input type="password" name="password" placeholder="password">
+                               <input type="submit" value="Do something"></input>
+                               <img src="" alt="sign up button" class="signup-button"/>
+                           </form>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
 
         {{/if}}
-
-
-
-
-
-
-
   </body>
 </html>

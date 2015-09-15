@@ -5,7 +5,11 @@
 body {
     background-color: #303332;
     font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 300;
     color: black;
+}
+.emphasis {
+    font-weight: 700;
 }
 .nav {
     width: 100%;
@@ -44,8 +48,6 @@ body {
     margin-bottom: 30px;
 }
 .app-name-container {
-    /*display: block;
-    margin: 0 auto;*/
     float: left;
     margin-left: 35%;
 
@@ -55,6 +57,10 @@ body {
 .app-name {
     color: #62CD8C;
     font-size: 6em;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+    line-height: normal;
 }
 .span1 {
     color: #ED462F;
@@ -87,14 +93,8 @@ body {
     margin: 0 auto;
     height: 75px;
     width: 150px;
-    /*float: left;
-
-    margin-left: 10%;*/
-
 }
-/*#basicModal {
-    background-color: red;
-}*/
+
 .modal-title{
     font-size: 3.4em;
     text-align: center;
@@ -102,7 +102,8 @@ body {
 }
 .modal-content {
    background-color: #303332;
-   border: 5px solid #62CD8C;
+   border:3px solid #62CD8C;
+   border-radius: 1px;
    padding: 50px;
    color:  #62CD8C;
 }
@@ -131,13 +132,13 @@ input[type="text"],input[type="password"] {
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #F8BE75;  
+   color: #F8BE75;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #F8BE75;  
+   color: #F8BE75;
 }
 
 :-ms-input-placeholder {
-   color: #F8BE75;  
+   color: #F8BE75;
 }
