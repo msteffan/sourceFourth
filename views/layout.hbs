@@ -10,28 +10,29 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="css/honeycombs.css" />
+        <link rel="stylesheet" type="text/css" href="/css/honeycombs.css" />
         <!-- <script src="../bower_components/angular/angular.min.js"></script> -->
         <!-- <script src="../bower_components/angular-route/angular-route.js"></script> -->
         <!-- <script src="../bower_components/angular-resource/angular-resource.js"></script> -->
         <!-- <script src="../bower_components/firebase/firebase.js"></script> -->
         <!-- <script src="../bower_components/angularfire/dist/angularfire.min.js"></script> -->
-        <script src="js/app.js"></script>
-        <script src="js/routes.js"></script>
-        <script src="js/controllers/sources.js"></script>
-        <script src="js/controllers/users.js"></script>
-        <script src="js/services/source.js"></script>
-        <script src="js/services/user.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="/js/routes.js"></script>
+        <script src="/js/controllers/sources.js"></script>
+        <script src="/js/controllers/users.js"></script>
+        <script src="/js/services/source.js"></script>
+        <script src="/js/services/user.js"></script>
         <!-- <link rel="icon"
           type="image/png"
           href="/img/favicon.png"> -->
    </head>
    <body>
        {{#if currentUser}}
-        <ng-app="sourceFourth">
+        <div ng-app="sourceFourth">
            Welcome User!
            <a href="/signout">Sign out</a>
            <div ng-view></div>
+        </div>
         {{ else }}
            <h2>Sign In</h2>
 
@@ -42,7 +43,7 @@
            </form>
 
         {{/if}}
-       </div>
+
 
 
 

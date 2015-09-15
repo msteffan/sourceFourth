@@ -35,24 +35,10 @@ app.use(session({
   secret: "some secret"
 }));
 app.use(methodOverride('_method'));
-app.use("/", express.static(path.join(__dirname + "/public")));
-//app.set("view engine", "hbs")
+app.use(express.static(path.join(__dirname, 'public')));
+app.set("view engine", "hbs")
 
-app.use(function(req, res, callback){
-    console.log(req);
-    if(req.user){
-        res.locals.currentUser = req.user.username;
-    }
-    //console.log(res.locals.currentUser);
-    callback()
-})
 
-app.get('/', function(req, res) {
-      res.sendFile(__dirname + "/public/index.html");
-    //res.render("index", {})
-    // load the single view file (angular will handle the page changes on the front-end)
-    //res.set('Content-Type', 'application/json');
-});
 
 // var fs = require("fs")
 // if (fs.existsSync("./env.js")){
@@ -93,6 +79,8 @@ passport.deserializeUser(function(id, cb){
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
 app.post('/signup', function(req, res, next){
     db.models.User.findOne({
         where: {
@@ -115,9 +103,6 @@ app.post('/signup', function(req, res, next){
     })
 });
 
-
-
-
 app.post("/signin", passport.authenticate("local", {
     failureRedirect: "/",
     successRedirect: "/#/sources"
@@ -130,7 +115,21 @@ app.get('/signout',
   }
 );
 
+app.use(function(req, res, callback){
+    console.log(req);
+    if(req.user){
+        res.locals.currentUser = req.user.username;
+    }
+    //console.log(res.locals.currentUser);
+    callback()
+})
 
+app.get('/', function(req, res) {
+     // res.sendFile(__dirname + "/public/index.html");
+    res.render("index", {})
+    // load the single view file (angular will handle the page changes on the front-end)
+    //res.set('Content-Type', 'application/json');
+});
 
 
 
