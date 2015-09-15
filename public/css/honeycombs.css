@@ -11,20 +11,25 @@ h1 {
 }
 #searchInput {
 	display: block;
-	margin:0 auto 50px;
+	float: right;
+	margin: 0 7% 90px;
 	width: 40%;
 	height: 50px;
-	border-radius: 10px;
-	background-color:#AAAAAA;
-	border: 1px solid #AAAAAA;
+
 	color: white;
 	padding: 10px;
 	font-size: 1.55rem;
 	font-family: 'Open Sans', Arial, sans-serif;
 
+    border-radius: 15px;
+    height: 55px;
+    background-color: #434846;
+    color: #F8BE75;
+    border: 2px solid #62CD8C;
+
 }
 ::-webkit-input-placeholder {
-color: white;
+	color: #F8BE75;
 }
 
 
@@ -55,7 +60,7 @@ color: white;
 }
 
 .comb .icon-hex-lg {
-	color: #FF9000;
+	color: #62CD8C;
 }
 
 .comb.placeholder{

@@ -31,12 +31,11 @@
    </head>
    <div class="nav">
        {{#if currentUser}}
-           <p>Welcome, {{currentUser}}.</p>
-           <a href="/signout">Sign out</a>
+           <a class="nav-button" href="/signout">Sign out</a>
        {{else}}
-           <img src="#" alt="Login Button" class="login-button" data-toggle="modal"
+           <img src="#" alt="Login Button" class="nav-button" data-toggle="modal"
         data-target="#signInModal">
-           <img src="#" alt="Sign Up Button" class="small-signup"  data-toggle="modal"
+           <img src="#" alt="Sign Up Button" class="nav-button"  data-toggle="modal"
         data-target="#signUpModal">
        {{/if}}
    </div>

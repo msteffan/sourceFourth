@@ -18,16 +18,16 @@ body {
     /*position: absolute;
     top: 0;*/
 }
-.login-button{
+.nav-button{
     float: right;
     margin-right: 10px;
 
 }
-.small-signup{
+/*.small-signup{
     float: right;
     margin-right: 10px;
 
-}
+}*/
 #logo {
     height: 200px;
     width: 200px;
