@@ -10,26 +10,27 @@ function error(res, req){
 
 //GET a user's sources
 router.get("/sources", function(req, res){
-    res.send("sources")
-  // User.findOne({ where: {spotifyId: req.session.profile.id}})
-  // .then(function(user){
-  //   Source.findAll({where: {userId: user.id}})
-  //   .then(function(sources, err){
-  //       //console.log("I worked", sources);
-  //       res.json(sources);
-  //       //console.log(err);
-  //   })
-  //
-  // });
+    console.log(req);
+  User.findOne({ where: {id: req.query.userId}})
+  .then(function(user){
+    Source.findAll({where: {userId: user.id}})
+    .then(function(sources, err){
+        //console.log("I worked", sources);
+        res.json(sources);
+        //console.log(err);
+    })
+
+  });
 });
 
 //POST to sources
 router.post("/sources", function(req, res){
-    User.findOne({ where: {spotifyId: req.session.profile.id }}).then(function(user){
-        var sources = {
-            name: req.body.name,
-            profession: req.body.profession,
-            location: req.boddy.location,
+    console.log(req);
+    User.findOne({ where: {id: req.query.userId }}).then(function(user){
+        var source = {
+            name: req.query.name,
+            profession: req.query.profession,
+            location: req.query.location,
             userId: user.id
         };
       Source.create(source).then(function(source, err){
@@ -41,7 +42,7 @@ router.post("/sources", function(req, res){
   });
 
 //patch specific source
-router.patch("/sources/:id", function(req, res){
+router.put("/sources/:id", function(req, res){
   Source.findById(req.params.id).then(function(source){
     if(!source) return error(res, "not found");
     source.updateAttributes(req.body).then(function(updatedSource){

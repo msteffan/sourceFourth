@@ -2,10 +2,13 @@
   var sourceControllers = angular.module('sourceControllers', ['ngRoute']);
 
   // index controller
-  sourceControllers.controller('sourcesController', ['Source', function(Source) {
-      console.log("i'm here")
-    // this.sources = Source.query();
+  sourceControllers.controller('sourcesController', ['Source', '$http', function(Source, $http) {
+      this.sources = $http.get("/currentUser").then(function(response){
+          console.log(response);
+           Source.query({userId: response.data});
+      });
   }]);
+
 
   // // show controller (handles delete link on show page)
   // grumbleControllers.controller('grumbleController', ['$routeParams','$location', 'Source','Comment', function($routeParams, $location, Source, Comment){
@@ -27,15 +30,24 @@
   // //   };
   // }]);
   // // new controller
-  // grumbleControllers.controller('newSourceController', ["$location", 'Source', function($location, Source){
-  //   this.create = function(){
-  //     Source.save(this.source, function(source) {
-  //         console.log(source);
-  //       //$location.path("/grumbles/" + grumble.id);
-  //     })
-  //   }
-  //
-  // }])
+  sourceControllers.controller('newSourceController', ["$location", 'Source', '$http', function($location, Source, $http){
+        this.create = function(){
+            var self = this;
+            $http.get("/currentUser").then(function(response){
+                var source = {
+                    name: self.source.name,
+                    profession: self.source.profession,
+                    location: self.source.location,
+                    userId: response.data
+                }
+                console.log(source);
+
+                Source.save(source, function(source) {
+                })
+            });
+
+        }
+  }])
   // //
   // // edit form controller (handles update)
   // grumbleControllers.controller('editGrumbleController', ["$location","$routeParams", 'Grumble', function($location, $routeParams, Grumble){

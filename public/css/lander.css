@@ -21,6 +21,14 @@ body {
 .nav-button{
     float: right;
     margin-right: 10px;
+    background-color: #434746;
+    border: 5px solid #F8BE75;
+    padding: 15px;
+    color: #F8BE75;
+    font-weight: 700;
+    font-size: 2rem;
+    width: 150px;
+
 
 }
 /*.small-signup{
@@ -88,7 +96,6 @@ body {
     width: 40%;
 }
 .signup-button {
-    clear: left;
     display: block;
     margin: 0 auto;
     height: 75px;

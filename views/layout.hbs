@@ -31,19 +31,19 @@
    </head>
    <div class="nav">
        {{#if currentUser}}
-           <a class="nav-button" href="/signout">Sign out</a>
+           <button class="nav-button"><a href="/signout">Sign out</a></button>
        {{else}}
-           <img src="#" alt="Login Button" class="nav-button" data-toggle="modal"
-        data-target="#signInModal">
-           <img src="#" alt="Sign Up Button" class="nav-button"  data-toggle="modal"
-        data-target="#signUpModal">
+           <button alt="Login Button" class="nav-button" data-toggle="modal"
+        data-target="#signInModal">Log In</button>
+           <button alt="Sign Up Button" class="nav-button"  data-toggle="modal"
+        data-target="#signUpModal">Sign Up</button>
        {{/if}}
    </div>
    <body>
        {{#if currentUser}}
           <div ng-app="sourceFourth">
-             <div ng-view></div>
-          </div>
+              <div ng-view></div>
+         </div>
         {{ else }}
            <div class="hero">
            <div class="first-hero">
@@ -61,7 +61,7 @@
                 <img src="" alt="image of phone" id="phone"/>
                 <div class="description-container">
                     <h4 class="app-description">You protect all of your sources...but does your software protect them? <span class="emphasis">SourceFourth</span> offers serious journalists a serious solution to contact management for today's story demands.</h4>
-                    <img src="" alt="sign up button" class="signup-button"/>
+                    <button alt="Sign Up Button" class="nav-button signup-button"  data-toggle="modal" data-target="#signUpModal">Sign Up</button>
                 </div>
             </div>
        </div>
