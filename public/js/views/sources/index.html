@@ -4,7 +4,7 @@
         <li class="stories-button"><span class="span2">Stories</span></li>
         <li class="sources-button"><span>Sources</span></li>
         <li class="account-button desktop-only" data-toggle="modal" data-target="#fullSourceModal"><span class="span4">New Source</span></li>
-        
+
     </ul>
 	<input id="searchInput" type="text" placeholder="Search for a source by name, profession, or location"></input>
 
@@ -15,7 +15,8 @@
     				<p class="source">{{source.name}}</p>
     			</div>
     			<div class="back-content">
-    				<p class="phone">{{source.profession}}</p>
+    				<p class="phone">{{source.phone}}</p>
+                    <p class="email">{{source.email}}</p>
     			</div>
     		</div>
     </div>
@@ -34,23 +35,7 @@
 
 <!-- SOURCE SHOW Modal -->
 <div class="modal fade" ng-repeat="source in sourceCtrl.sources" id="{{source.id}}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" >
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">{{source.name}}</h4>
-            </div>
-            <div class="modal-body">
-                <h3>Profession/Title: {{source.profession}}</h3>
-                <p class="source">Phone Number {{source.phone}}</p>
-                <p class="source">Email address {{source.email}}</p>
-                <p class="source">Other info {{source.other}}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="sourceCtrl.delete(source.id)">Delete</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+    <show-source></show-source>
 </div>
 
 <!-- NEW (FULL) SOURCE Modal -->

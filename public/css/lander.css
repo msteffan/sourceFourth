@@ -36,23 +36,25 @@ body {
 }
 
 #logo {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     float: left;
-    margin-left: 10%;
+    margin-left: 15%;
     position: absolute;
     /*margin-left: 200px;*/
 }
 #phone {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     float: left;
-    margin-left: 10%;
+    margin-left: 15%;
+    padding-bottom: 20px;
     /*position: absolute;*/
 }
 .first-hero {
     height: 200px;
-    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 70px;
 }
 .app-name-container {
     float: left;
@@ -89,10 +91,11 @@ body {
     float: left;
     display: block;
     font-size: 1.5em;
-    margin-left: 10%;
+    margin-left: 3%;
     line-height: 150%;
+    padding-top: 30px;
     color: #62CD8C;
-    width: 40%;
+    width: 35%;
 }
 .signup-button {
     display: block;

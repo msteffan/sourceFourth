@@ -9,6 +9,8 @@
     'sourceRouter',
     // 'userRouter',
     'sourceServices',
-    'userServices'
+    'userServices',
+    'sourceDirectives'
+
   ]);
 })()

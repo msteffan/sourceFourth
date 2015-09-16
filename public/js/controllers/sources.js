@@ -21,35 +21,35 @@
         //          });
         //      }
         // }
-        this.create = function(){
-            var poodle = this;
-            $http.get("/currentUser").then(function(response){
-                // if(self.source.name === "" || self.source.profession === "" || self.source.location === ""){
-                //     return
-                // }
-                var source = {
-                    name: poodle.source.name,
-                    profession: poodle.source.profession,
-                    location: poodle.source.location,
-                    email: poodle.source.email,
-                    phone: poodle.source.phone,
-                    other: poodle.source.other,
-                    userId: response.data
-                }
-
-                Source.save(source, function(source) {
-                    console.log(self.sources);
-                    $http.get("/currentUser").then(function(response){
-                        console.log(self.sources);
-                        Source.query({userId: response.data}, function(sources){
-                            self.sources = sources;
-                            console.log(self.sources);
-                        });
-                     })
-                })
-            });
-
-        }
+        // this.create = function(){
+        //     var poodle = this;
+        //     $http.get("/currentUser").then(function(response){
+        //         // if(self.source.name === "" || self.source.profession === "" || self.source.location === ""){
+        //         //     return
+        //         // }
+        //         var source = {
+        //             name: poodle.source.name,
+        //             profession: poodle.source.profession,
+        //             location: poodle.source.location,
+        //             email: poodle.source.email,
+        //             phone: poodle.source.phone,
+        //             other: poodle.source.other,
+        //             userId: response.data
+        //         }
+        //
+        //         Source.save(source, function(source) {
+        //             console.log(self.sources);
+        //             $http.get("/currentUser").then(function(response){
+        //                 console.log(self.sources);
+        //                 Source.query({userId: response.data}, function(sources){
+        //                     self.sources = sources;
+        //                     console.log(self.sources);
+        //                 });
+        //              })
+        //         })
+        //     });
+        //
+        // }
         this.delete = function(id){
           $(".modal-backdrop").hide();
           Source.delete({id: id}, function(){
@@ -93,14 +93,18 @@
                     name: self.source.name,
                     profession: self.source.profession,
                     location: self.source.location,
+                    email: self.source.email,
+                    phone: self.source.phone,
+                    other: self.source.other,
                     userId: response.data
+
                 }
                 Source.save(source, function(source) {
-                    $http.get("/currentUser").then(function(response){
-                        Source.query({userId: response.data}, function(sources){
-                            self.sources = sources;
-                        });
-                    })
+                    // $http.get("/currentUser").then(function(response){
+                    //     Source.query({userId: response.data}, function(sources){
+                    //         self.sources = sources;
+                    //     });
+                    // })
                 })
             });
 
