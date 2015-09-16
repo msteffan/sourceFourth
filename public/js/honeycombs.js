@@ -160,7 +160,7 @@
             });
 
             buildHtml();
-            reorder(false);
+            reorder(true);
         }
 
         return this.each(function() {
