@@ -16,7 +16,7 @@ var LocalStrategy = require("passport-local").Strategy;
 app.use("/", usersController);
 app.use("/", sourcesController);
 
-pg.connect(SOURCEFOURTH_URL, function(err, client) {
+pg.connect(process.env.SOURCEFOURTH_URL, function(err, client) {
   if (err) throw err;
   // console.log('Connected to postgres! Getting schemas...');
   //
@@ -40,14 +40,14 @@ app.set("view engine", "hbs")
 
 
 
-// var fs = require("fs")
-// if (fs.existsSync("./env.js")){
-//  console.log("yes")
-//  var env = require("./env");
-// }
-// else {
-//  var env = process.env;
-// }
+var fs = require("fs")
+if (fs.existsSync("./env.js")){
+ //console.log("yes")
+ var env = require("./env");
+}
+else {
+ var env = process.env;
+}
 
 
 passport.use(new LocalStrategy(function(username, pass, callback){
