@@ -3,11 +3,14 @@
 
   // index controller
   sourceControllers.controller('sourcesController', ['Source', '$http', function(Source, $http) {
-      this.sources = $http.get("/currentUser").then(function(response){
-          console.log(response);
-           Source.query({userId: response.data});
-      });
-  }]);
+    var self = this;
+        self.sources = {};
+        $http.get("/currentUser").then(function(response){
+             Source.query({userId: response.data}, function(sources){
+                 self.sources = sources;
+             });
+        });
+    }]);
 
 
   // // show controller (handles delete link on show page)
@@ -34,6 +37,9 @@
         this.create = function(){
             var self = this;
             $http.get("/currentUser").then(function(response){
+                if(self.source.name === "" || self.source.profession === "" || self.source.location === ""){
+                    return
+                }
                 var source = {
                     name: self.source.name,
                     profession: self.source.profession,

@@ -270,3 +270,14 @@ h1 {
 	cursor: pointer;
 
 }
+
+
+@media (max-width:900px){
+
+	#searchInput {
+		float: none;
+		display: block;
+		width: 90%;
+		margin: 30px auto;
+	}
+}

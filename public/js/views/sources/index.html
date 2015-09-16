@@ -1,26 +1,24 @@
 <div>
-    <div class="nav">
-        <img src="#" alt="Sources Button" class="sources-button">
-        <img src="#" alt="Stories Button" class="stories-button">
-        <img src="#" alt="account Button" class="account-button">
-        <img src="#" alt="create source Button" class="account-button" data-toggle="modal" data-target="#newSourceModal" />
-    </div>
-	<form>
-		<input id="searchInput" type="text" placeholder="Search for a source by name, profession, or location"></input>
-	</form>
+    <ul class="nav">
+        <li class="account-button"><span class="span1">Account</span></li>
+        <li class="stories-button"><span class="span2">Stories</span></li>
+        <li class="sources-button"><span>Sources</span></li>
+        <li class="account-button" data-toggle="modal" data-target="#newSourceModal"><span class="span4">New Source</span></li>
+    </ul>
+	<!-- <form> -->
+	<input id="searchInput" type="text" placeholder="Search for a source by name, profession, or location"></input>
+	<!-- </form> -->
 	<div id="header"></div>
 	<div class="honeycombs" id="list">
-            <div ng-repeat="source in sourceCtrl.sources">
-                <div class="comb" data-toggle="modal" data-target="#basicModal">
-        			<div class="front-content">
-        				<p class="source">Melissa Steffan</p>
-        			</div>
-        			<div class="back-content">
-        				<p class="phone">(206) 498-7863</p>
-        			</div>
-        		</div>
-            </div>
-        </div>
+            <div ng-repeat="source in sourceCtrl.sources" class="comb" data-toggle="modal" data-target="#basicModal">
+    			<div class="front-content">
+    				<p class="source">{{source.name}}</p>
+    			</div>
+    			<div class="back-content">
+    				<p class="phone">{{source.profession}}</p>
+    			</div>
+    		</div>
+    </div>
 
 
 		<!-- <div class="comb" data-toggle="modal" data-target="#basicModal">
@@ -31,8 +29,8 @@
 				<p class="phone">(206) 498-7863</p>
 			</div>
 		</div>
+ -->
 
-     -->
 
 <!-- SOURCE SHOW Modal -->
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -69,7 +67,7 @@
                     <input type="text" name="authorName" ng-model="newSourceCtrl.source.profession">
                     <label>Location</label>
                     <input type="text" name="content" ng-model="newSourceCtrl.source.location">
-                    <button>Add source</button>
+                    <button src="" alt="new sources button" class="nav-button modal-button">Add Source</button>
                 </form>
             </div>
             <!-- <div class="modal-footer">

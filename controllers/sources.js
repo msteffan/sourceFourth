@@ -10,13 +10,18 @@ function error(res, req){
 
 //GET a user's sources
 router.get("/sources", function(req, res){
-    console.log(req);
   User.findOne({ where: {id: req.query.userId}})
   .then(function(user){
     Source.findAll({where: {userId: user.id}})
     .then(function(sources, err){
-        //console.log("I worked", sources);
-        res.json(sources);
+        //console.log(sources[0].dataValues);
+        var sourceArray = [];
+        for (var i=0;i<sources.length; i++){
+            var oneSource = sources[i].dataValues;
+            sourceArray.push(oneSource)
+        }
+        console.log(sourceArray);
+        res.json(sourceArray);
         //console.log(err);
     })
 

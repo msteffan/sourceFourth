@@ -19,7 +19,6 @@ body {
     top: 0;*/
 }
 .nav-button{
-    float: right;
     margin-right: 10px;
     background-color: #434746;
     border: 5px solid #F8BE75;
@@ -31,11 +30,11 @@ body {
 
 
 }
-/*.small-signup{
+.nav-floats {
     float: right;
-    margin-right: 10px;
 
-}*/
+}
+
 #logo {
     height: 200px;
     width: 200px;
@@ -122,6 +121,13 @@ body {
     font-size: 2em;
     padding-bottom: 15px;
 }
+.modal-button {
+    background-color:#303332;
+}
+.modal-button, a, a:hover {
+    color: #F8BE75;
+    text-decoration: none;
+}
 input[type="text"],input[type="password"] {
     width: 95%;
     display: block;
@@ -148,4 +154,67 @@ input[type="text"],input[type="password"] {
 
 :-ms-input-placeholder {
    color: #F8BE75;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    width: 15%;
+    text-align: center;
+    float: right;
+    color: #62CD8C;
+    font-size: 2rem;
+    font-weight: 700;
+}
+li:hover {
+    text-decoration: underline;
+}
+
+@media (max-width:900px){
+    #logo {
+        display: none;
+    }
+    #phone {
+        display: none;
+    }
+    .app-name-container{
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+
+    }
+    .description-container {
+        display: block;
+        width: 100%;
+
+    }
+    .app-description {
+        float: none;
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .app-name {
+        padding-top: 30px;
+        padding-bottom: 20px;
+        font-size: 4em;
+    }
+    .tagline {
+        margin-bottom: 50px;
+    }
+    input[type="text"],input[type="password"] {
+        width: 100%;
+    }
+    ul {
+        display: none;
+    }
+
+
+
 }

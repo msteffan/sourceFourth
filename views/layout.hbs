@@ -31,11 +31,11 @@
    </head>
    <div class="nav">
        {{#if currentUser}}
-           <button class="nav-button"><a href="/signout">Sign out</a></button>
+           <button class="nav-button nav-floats"><a href="/signout">Sign out</a></button>
        {{else}}
-           <button alt="Login Button" class="nav-button" data-toggle="modal"
+           <button alt="Login Button" class="nav-button nav-floats" data-toggle="modal"
         data-target="#signInModal">Log In</button>
-           <button alt="Sign Up Button" class="nav-button"  data-toggle="modal"
+           <button alt="Sign Up Button" class="nav-button nav-floats"  data-toggle="modal"
         data-target="#signUpModal">Sign Up</button>
        {{/if}}
    </div>
@@ -50,7 +50,7 @@
                <img src="" alt="logo" id="logo" />
                <div class="app-name-container">
                    <h1 class="app-name">SourceFourth</h1>
-                   <h2><span class="span1">Source</span>
+                   <h2 class="tagline"><span class="span1">Source</span>
                         <span class="span2">management</span>
                         <span class="span3">for</span>
                         <span class="span4">journalists.</class>
@@ -61,7 +61,7 @@
                 <img src="" alt="image of phone" id="phone"/>
                 <div class="description-container">
                     <h4 class="app-description">You protect all of your sources...but does your software protect them? <span class="emphasis">SourceFourth</span> offers serious journalists a serious solution to contact management for today's story demands.</h4>
-                    <button alt="Sign Up Button" class="nav-button signup-button"  data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+                    <!-- <button alt="Sign Up Button" class="nav-button signup-button"  data-toggle="modal" data-target="#signUpModal">Sign Up</button> -->
                 </div>
             </div>
        </div>
@@ -80,8 +80,7 @@
                         <input type="text" name="username" placeholder="Username">
                         <h4 class="modal-label"> Create a <span class="emphasis">password</span>.</h4>
                         <input type="password" name="password" placeholder="password">
-                        <input type="submit" value="Do something"></input>
-                        <img src="" alt="sign up button" class="signup-button"/>
+                        <button src="" alt="sign up button" class="nav-button modal-button">Sign Up</button>
                     </form>
                  </div>
              </div>
@@ -101,8 +100,7 @@
                                <input type="text" name="username" placeholder="Username">
                                <h4 class="modal-label"> Password</h4>
                                <input type="password" name="password" placeholder="password">
-                               <input type="submit" value="Do something"></input>
-                               <img src="" alt="sign up button" class="signup-button"/>
+                               <button src="" alt="sign up button" class="nav-button modal-button">Sign In</button>
                            </form>
                         </div>
                     </div>
