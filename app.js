@@ -120,7 +120,6 @@ app.use(function(req, res, callback){
         res.locals.currentUser = req.user.username;
         res.locals.userId = req.user.id;
     }
-    //console.log(res.locals.currentUser);
     callback()
 })
 
@@ -128,8 +127,6 @@ app.get('/', function(req, res) {
      // res.sendFile(__dirname + "/public/index.html");
     res.render("index", {})
 
-    // load the single view file (angular will handle the page changes on the front-end)
-    //res.set('Content-Type', 'application/json');
 });
 
 app.get("/currentUser", function(req, res){

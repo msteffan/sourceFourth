@@ -3,26 +3,33 @@
 
   // index controller
   sourceControllers.controller('sourcesController', ['Source', '$http', function(Source, $http) {
-    var self = this;
+        var self = this;
         self.sources = {};
         $http.get("/currentUser").then(function(response){
              Source.query({userId: response.data}, function(sources){
                  self.sources = sources;
+                 //$(".honeycombs").css("width", "50%")
              });
         });
+        this.delete = function(id){
+            console.log(id);
+          Source.delete({id: id}, function(){
+              console.log("deleted");
+            // $location.path("/grumbles");
+          });
+        };
+
     }]);
 
 
-  // // show controller (handles delete link on show page)
-  // grumbleControllers.controller('grumbleController', ['$routeParams','$location', 'Source','Comment', function($routeParams, $location, Source, Comment){
-  // //   this.grumble = Grumble.get({$id: $routeParams.id}, function(grumble){
-  // //     grumble.comments = Comment.query({grumbleId: $routeParams.id});
-  // //   });
-  // //   this.delete = function(id){
-  // //     Grumble.delete({$id: id}, function(){
-  // //       $location.path("/grumbles");
-  // //     });
-  // //   };
+  // show controller (handles delete link on show page)
+  // sourceControllers.controller('sourceController', ['$routeParams','$location', 'Source', function($routeParams, $location, Source){
+  //   this.delete = function(id){
+  //       console.log(id);
+  //     Source.delete({$id: id}, function(){
+  //       // $location.path("/grumbles");
+  //     });
+  //   };
   // //   this.createComment = function(comment){
   // //     var self = this;
   // //     // todo: move comment support to firebase

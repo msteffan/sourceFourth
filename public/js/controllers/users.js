@@ -8,10 +8,7 @@
               username: $scope.user.username,
               password: $scope.user.password
           }
-          console.log(user);
-
           User.save({}, {username: user.username, password: user.password}, function(user){
-              console.log(user);
           })
       }
       this.authenticate = function(){
@@ -19,9 +16,7 @@
               username: $scope.user.username,
               password: $scope.user.password
           }
-          console.log(user);
           $http.post("/signup", {username: user.username, password: user.password}).then(function(response){
-                console.log(response);
             })
 
         }

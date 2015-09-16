@@ -59,6 +59,7 @@ router.put("/sources/:id", function(req, res){
 //DELETE specific source
 router.delete("/sources/:id", function(req, res){
   Source.findById(req.params.id).then(function(source){
+      console.log(source);
     if(!source) return error(res, "not found");
     source.destroy().then(function(){
       res.json({success: true});
