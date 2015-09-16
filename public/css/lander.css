@@ -175,6 +175,10 @@ li:hover {
     text-decoration: underline;
 }
 
+.nav-button.mobile-only {
+    display: none;
+}
+
 @media (max-width:900px){
     #logo {
         display: none;
@@ -214,6 +218,14 @@ li:hover {
     ul {
         display: none;
     }
+    .nav-button.mobile-only {
+        display: inline-block;
+    }
+    .nav-button {
+        display: inline-block;
+        margin: 0;
+    }
+
 
 
 

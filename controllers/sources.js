@@ -36,6 +36,9 @@ router.post("/sources", function(req, res){
             name: req.query.name,
             profession: req.query.profession,
             location: req.query.location,
+            email: req.query.email,
+            phone: req.query.phone,
+            other: req.query.other,
             userId: user.id
         };
       Source.create(source).then(function(source, err){

@@ -13,12 +13,6 @@
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="/css/lander.css" />
         <link rel="stylesheet" type="text/css" href="/css/honeycombs.css" />
-
-        <!-- <script src="../bower_components/angular/angular.min.js"></script> -->
-        <!-- <script src="../bower_components/angular-route/angular-route.js"></script> -->
-        <!-- <script src="../bower_components/angular-resource/angular-resource.js"></script> -->
-        <!-- <script src="../bower_components/firebase/firebase.js"></script> -->
-        <!-- <script src="../bower_components/angularfire/dist/angularfire.min.js"></script> -->
         <script src="/js/app.js"></script>
         <script src="/js/routes.js"></script>
         <script src="/js/controllers/sources.js"></script>
@@ -31,6 +25,7 @@
    </head>
    <div class="nav">
        {{#if currentUser}}
+           <button class="nav-button mobile-only" data-toggle="modal" data-target="#quickSourceModal">Quick Add</button>
            <button class="nav-button nav-floats"><a href="/signout">Sign out</a></button>
        {{else}}
            <button alt="Login Button" class="nav-button nav-floats" data-toggle="modal"

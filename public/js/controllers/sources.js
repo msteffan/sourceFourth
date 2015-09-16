@@ -5,17 +5,59 @@
   sourceControllers.controller('sourcesController', ['Source', '$http', function(Source, $http) {
         var self = this;
         self.sources = {};
+        // self.user; $http.get("/currentUser").then(function(response){
+        //     self.user = response.data;
+        //     console.log(self.user);
+        // });
         $http.get("/currentUser").then(function(response){
              Source.query({userId: response.data}, function(sources){
                  self.sources = sources;
-                 //$(".honeycombs").css("width", "50%")
              });
         });
+        // self.getSources = function(){
+        //     $http.get("/currentUser").then(function(response){
+        //          Source.query({userId: response.data}, function(sources){
+        //              self.sources = sources;
+        //          });
+        //      }
+        // }
+        this.create = function(){
+            var poodle = this;
+            $http.get("/currentUser").then(function(response){
+                // if(self.source.name === "" || self.source.profession === "" || self.source.location === ""){
+                //     return
+                // }
+                var source = {
+                    name: poodle.source.name,
+                    profession: poodle.source.profession,
+                    location: poodle.source.location,
+                    email: poodle.source.email,
+                    phone: poodle.source.phone,
+                    other: poodle.source.other,
+                    userId: response.data
+                }
+
+                Source.save(source, function(source) {
+                    console.log(self.sources);
+                    $http.get("/currentUser").then(function(response){
+                        console.log(self.sources);
+                        Source.query({userId: response.data}, function(sources){
+                            self.sources = sources;
+                            console.log(self.sources);
+                        });
+                     })
+                })
+            });
+
+        }
         this.delete = function(id){
-            console.log(id);
+          $(".modal-backdrop").hide();
           Source.delete({id: id}, function(){
-              console.log("deleted");
-            // $location.path("/grumbles");
+              $http.get("/currentUser").then(function(response){
+                  Source.query({userId: response.data}, function(sources){
+                      self.sources = sources;
+                  });
+              })
           });
         };
 
@@ -44,18 +86,21 @@
         this.create = function(){
             var self = this;
             $http.get("/currentUser").then(function(response){
-                if(self.source.name === "" || self.source.profession === "" || self.source.location === ""){
-                    return
-                }
+                // if(self.source.name === "" || self.source.profession === "" || self.source.location === ""){
+                //     return
+                // }
                 var source = {
                     name: self.source.name,
                     profession: self.source.profession,
                     location: self.source.location,
                     userId: response.data
                 }
-                console.log(source);
-
                 Source.save(source, function(source) {
+                    $http.get("/currentUser").then(function(response){
+                        Source.query({userId: response.data}, function(sources){
+                            self.sources = sources;
+                        });
+                    })
                 })
             });
 
