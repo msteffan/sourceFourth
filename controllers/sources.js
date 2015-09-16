@@ -30,7 +30,6 @@ router.get("/sources", function(req, res){
 
 //POST to sources
 router.post("/sources", function(req, res){
-    console.log(req);
     User.findOne({ where: {id: req.query.userId }}).then(function(user){
         var source = {
             name: req.query.name,
@@ -42,6 +41,7 @@ router.post("/sources", function(req, res){
             userId: user.id
         };
       Source.create(source).then(function(source, err){
+          console.log(source);
         res.json(source);
         //console.log(err);
         });

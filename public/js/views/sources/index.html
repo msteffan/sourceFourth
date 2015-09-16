@@ -21,18 +21,6 @@
     		</div>
     </div>
 
-
-		<!-- <div class="comb" data-toggle="modal" data-target="#basicModal">
-			<div class="front-content">
-				<p class="source">Melissa Steffan</p>
-			</div>
-			<div class="back-content">
-				<p class="phone">(206) 498-7863</p>
-			</div>
-		</div>
- -->
-
-
 <!-- SOURCE SHOW Modal -->
 <div class="modal fade" ng-repeat="source in sourceCtrl.sources" id="{{source.id}}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" >
     <show-source></show-source>
@@ -46,19 +34,19 @@
                 <h4 class="modal-title" id="myModalLabel">Add a New Source</h4>
             </div>
             <div class="modal-body" >
-                <form ng-controller="newSourceController as newSourceCtrl" name="newSourceCtrl.sourceForm" class='sourceForm' ng-submit="newSourceCtrl.create()">
+                <form name="sourceCtrl.sourceForm" class='sourceForm' ng-submit="sourceCtrl.create()">
                     <label>Name</label>
-                    <input type="text" name="name" ng-model="newSourceCtrl.source.name">
+                    <input type="text" name="name" ng-model="sourceCtrl.source.name">
                     <label>Email</label>
-                    <input type="text" name="email" ng-model="newSourceCtrl.source.email">
+                    <input type="text" name="email" ng-model="sourceCtrl.source.email">
                     <label>Phone</label>
-                    <input type="text" name="phone" ng-model="newSourceCtrl.source.phone">
+                    <input type="text" name="phone" ng-model="sourceCtrl.source.phone">
                     <label>Profession</label>
-                    <input type="text" name="authorName" ng-model="newSourceCtrl.source.profession">
+                    <input type="text" name="authorName" ng-model="sourceCtrl.source.profession">
                     <label>Location</label>
-                    <input type="text" name="content" ng-model="newSourceCtrl.source.location">
+                    <input type="text" name="content" ng-model="sourceCtrl.source.location">
                     <label>Other Info</label>
-                    <input type="text" name="otherInfo" ng-model="newSourceCtrl.source.other">
+                    <input type="text" name="otherInfo" ng-model="sourceCtrl.source.other">
                     <button src="" alt="new sources button" class="nav-button modal-button">Add Source</button>
                 </form>
             </div>
@@ -78,14 +66,14 @@
                 <h4 class="modal-title" id="myModalLabel">Add a New Source</h4>
             </div>
             <div class="modal-body" >
-                <form ng-controller="newSourceController as newSourceCtrl" name="newSourceCtrl.sourceForm" class='sourceForm' ng-submit="newSourceCtrl.create()">
+                <form name="sourceCtrl.sourceForm" class='sourceForm' ng-submit="sourceCtrl.create()">
                     <label>Name</label>
-                    <input type="text" name="name" ng-model="newSourceCtrl.source.name">
+                    <input type="text" name="name" ng-model="sourceCtrl.source.name">
                     <label>Email</label>
-                    <input type="text" name="email" ng-model="newSourceCtrl.source.email">
+                    <input type="text" name="email" ng-model="sourceCtrl.source.email">
                     <label>Phone</label>
-                    <input type="text" name="phone" ng-model="newSourceCtrl.source.phone">
-                    <button src="" alt="new sources button" class="nav-button modal-button">Add Source</button>
+                    <input type="text" name="phone" ng-model="sourceCtrl.source.phone">
+                    <button alt="new sources button" class="nav-button modal-button">Add Source</button>
                 </form>
             </div>
             <!-- <div class="modal-footer">
