@@ -240,12 +240,16 @@ li:hover {
     ul {
         display: none;
     }
-    .nav-button.mobile-only {
-        display: inline-block;
-    }
     .nav-button {
         display: inline-block;
-        margin: 0;
+        margin: 0 10px;
+
+    }
+
+    .nav-button.mobile-only {
+        display: inline-block;
+        float: left;
+
     }
 
 

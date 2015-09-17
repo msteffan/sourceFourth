@@ -26,6 +26,13 @@
     <show-source></show-source>
 </div>
 
+
+<!-- Edit Source Modal -->
+<div class="modal fade" ng-repeat="source in sourceCtrl.sources" id="editSourceModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" >
+    <edit-source></edit-source>
+</div>
+
+
 <!-- NEW (FULL) SOURCE Modal -->
 <div class="modal fade" id="fullSourceModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">

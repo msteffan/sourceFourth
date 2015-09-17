@@ -1,7 +1,7 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">{{source.name}}</h4>
+            <h4 class="modal-title" id="myModalLabel">EDIT</h4>
         </div>
         <div class="modal-body">
             <h3 >Profession/Title: {{source.profession}}</h3>
@@ -10,16 +10,10 @@
             <p  class="source">Comments: {{source.other}}</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default"
-            data-toggle="modal" data-target="#editSourceModal">Edit</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editSourceModal"
+            >Edit</button>
             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="sourceCtrl.delete(source.id)">Delete</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
-</div>
-
-
-<!-- Edit Source Modal -->
-<div class="modal fade" ng-repeat="source in sourceCtrl.sources"  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" >
-    <edit-source></edit-source>
 </div>

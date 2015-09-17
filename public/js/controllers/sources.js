@@ -2,28 +2,24 @@
   var sourceControllers = angular.module('sourceControllers', ['ngRoute']);
 
   // index controller
-  sourceControllers.controller('sourcesController', ['Source', '$http', function(Source, $http) {
+  sourceControllers.controller('sourcesController', ['Source', '$http', '$location', function(Source, $http, $location) {
         var self = this;
         self.sources = {};
         $http.get("/currentUser").then(function(response){
              Source.query({userId: response.data}, function(sources){
                  self.sources = sources;
-                 $('.honeycombs').honeycombs({
-                     combWidth:200,
-                     margin: -20,
-                     threshold: 3
-                 });
 
              });
         });
         //
-        this.edit = function(){
-            this.source = Source.get({$id: $routeParams.id});
-            this.update = function(){
-              this.source.$save();
-              //$location.path("/grumbles/" + this.grumble.$id);
-            };
-        }
+        // this.edit = function(id){
+        //     $location.path("/sources/" + id + "/edit");
+        //
+        //     // this.source = Source.get({$id: $routeParams.id});
+        //     // this.update = function(){
+        //     //   this.source.$save();
+        //       //$location.path("/grumbles/" + this.grumble.$id);
+        // }
         // self.getSources = function(){
         //     $http.get("/currentUser").then(function(response){
         //          Source.query({userId: response.data}, function(sources){
