@@ -1,8 +1,8 @@
 <div>
     <ul class="nav">
         <li class="account-button"><span class="span1">Account</span></li>
-        <li class="stories-button"><span class="span2">Stories</span></li>
-        <li class="sources-button"><span>Sources</span></li>
+        <li class="privacy-button"><span class="span2">Enable Privacy</span></li>
+        <!-- <li class="sources-button"><span>Sources</span></li> -->
         <li class="account-button desktop-only" data-toggle="modal" data-target="#fullSourceModal"><span class="span4">New Source</span></li>
 
     </ul>
@@ -95,7 +95,10 @@
             margin: -20,
             threshold: 3
         });
-
+        $(".privacy-button").on("click", function(){
+            $("p.source").toggleClass("strikeout");
+            $("input[type=text]").toggleClass("strikeout");
+        })
     //console.log($(".honeycombs").css("width"));
     $("#searchInput").keyup(function(){
        // Retrieve the input field text and reset the count to zero

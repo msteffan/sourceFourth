@@ -2,30 +2,28 @@
   var sourceControllers = angular.module('sourceControllers', ['ngRoute']);
 
   // index controller
-  // var sources = {}
-  // function getSources(){
-  //     $http.get("/currentUser").then(function(response){
-  //          Source.query({userId: response.data}, function(sources){
-  //              sources = sources;
-  //          });
-  //     })
-  //     console.log(sources);
-  // }
-  // getSources();
   sourceControllers.controller('sourcesController', ['Source', '$http', function(Source, $http) {
         var self = this;
-        //self.sources = sources;
         self.sources = {};
         $http.get("/currentUser").then(function(response){
              Source.query({userId: response.data}, function(sources){
                  self.sources = sources;
+                 $('.honeycombs').honeycombs({
+                     combWidth:200,
+                     margin: -20,
+                     threshold: 3
+                 });
+
              });
         });
-        // 
-        // this.edit = function(){
         //
-        // //
-        // }
+        this.edit = function(){
+            this.source = Source.get({$id: $routeParams.id});
+            this.update = function(){
+              this.source.$save();
+              //$location.path("/grumbles/" + this.grumble.$id);
+            };
+        }
         // self.getSources = function(){
         //     $http.get("/currentUser").then(function(response){
         //          Source.query({userId: response.data}, function(sources){
@@ -58,6 +56,7 @@
             });
 
         }
+
         this.delete = function(id){
           $(".modal-backdrop").hide();
           Source.delete({id: id}, function(){
@@ -72,11 +71,7 @@
     }]);
 
   // // edit form controller (handles update)
-  // grumbleControllers.controller('editGrumbleController', ["$location","$routeParams", 'Grumble', function($location, $routeParams, Grumble){
-  //   this.grumble = Grumble.get({$id: $routeParams.id});
-  //   this.update = function(){
-  //     this.grumble.$save();
-  //     $location.path("/grumbles/" + this.grumble.$id);
-  //   };
-  // }]);
+  sourceControllers.controller('editSourceController', ["$location","$routeParams", 'Source', function($location, $routeParams, Source){
+
+  }]);
 })();

@@ -32,6 +32,16 @@ h1 {
 	color: #F8BE75;
 }
 
+#searchInput.strikeout {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#searchInput.strikeout:hover {
+    color: #F8BE75;
+    text-shadow: none;
+}
+
 
 .honeycombs{
 	position: relative;
@@ -222,7 +232,20 @@ h1 {
 .honeycombs .comb{
 	position: absolute;
 	display: inline-block;
+
 }
+
+
+/*.source.strikeout {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.source.strikeout:hover {
+    color: black;
+    text-shadow: none;
+}*/
+
 
 .honeycombs .hex_l,
 .honeycombs .hex_r{
@@ -271,6 +294,15 @@ h1 {
 
 }
 
+p.source.strikeout {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+p.source.strikeout:hover {
+    color: #62CD8C;
+    text-shadow: none;
+}
 
 @media (max-width:900px){
 

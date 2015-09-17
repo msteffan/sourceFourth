@@ -7,7 +7,9 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
     font-weight: 300;
     color: black;
+
 }
+
 .emphasis {
     font-weight: 700;
 }
@@ -131,6 +133,8 @@ body {
     color: #F8BE75;
     text-decoration: none;
 }
+
+
 input[type="text"],input[type="password"] {
     width: 95%;
     display: block;
@@ -142,6 +146,15 @@ input[type="text"],input[type="password"] {
     color: #F8BE75;
     padding: 10px;
     border: 2px solid #62CD8C;
+}
+input.strikeout {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+input.strikeout:hover {
+    color: #F8BE75;
+    text-shadow: none;
 }
 ::-webkit-input-placeholder {
    color: #F8BE75;
@@ -181,6 +194,12 @@ li:hover {
 .nav-button.mobile-only {
     display: none;
 }
+
+/*FOR PRIVACY MODE */
+
+
+
+/* MOBILE STYLES */
 
 @media (max-width:900px){
     #logo {
