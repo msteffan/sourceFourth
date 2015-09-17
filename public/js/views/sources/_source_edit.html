@@ -1,19 +1,30 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">EDIT</h4>
+            <h4 class="modal-title" id="myModalLabel">Edit Source</h4>
         </div>
-        <div class="modal-body">
-            <h3 >Profession/Title: {{source.profession}}</h3>
-            <p class="source">Phone Number: {{source.phone}}</p>
-            <p  class="source">Email address: {{source.email}}</p>
-            <p  class="source">Comments: {{source.other}}</p>
+        <div class="modal-body" >
+            <form name="sourceCtrl.sourceForm" class='sourceForm' ng-submit="sourceCtrl.edit()">
+
+                <label>Name</label>
+                <input type="text" name="name" ng-model="sourceCtrl.source.name">
+                <label>Email</label>
+                <input type="text" name="email" ng-model="sourceCtrl.source.email">
+                <label>Phone</label>
+                <input type="text" name="phone" ng-model="sourceCtrl.source.phone">
+                <label>Profession</label>
+                <input type="text" name="authorName" ng-model="sourceCtrl.source.profession">
+                <label>Location</label>
+                <input type="text" name="content" ng-model="sourceCtrl.source.location">
+                <label>Other Info</label>
+                <input type="text" name="otherInfo" ng-model="sourceCtrl.source.other">
+                <button src="" alt="new sources button" class="nav-button modal-button">Update</button>
+                <button type="button" class="btn btn-default " data-dismiss="modal" ng-click="sourceCtrl.delete(source.id)">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editSourceModal"
-            >Edit</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="sourceCtrl.delete(source.id)">Delete</button>
+        <!-- <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+        </div> -->
     </div>
 </div>
