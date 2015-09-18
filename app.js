@@ -42,26 +42,26 @@ app.set("view engine", "hbs")
 
 
 
-// var fs = require("fs")
-// if (fs.existsSync("./env.js")){
-//  //console.log("yes")
-//  var env = require("./env");
-// }
-// else {
-//  var env = process.env;
-// }
-
-if (process.env.SOURCEFOURTH_URL) {
-  // the application is executed on Heroku ... use the postgres database
-  sequelize = new Sequelize(process.env.SOURCEFOURTH_URL, {
-    dialect:  'postgres',
-    protocol: 'postgres',
-    logging:  true //false
-  });
-} else {
-  // the application is executed on the local machine
-  sequelize = new Sequelize("postgres:///sourceFourth");
+var fs = require("fs")
+if (fs.existsSync("./env.js")){
+ //console.log("yes")
+ var env = require("./env");
 }
+else {
+ var env = process.env;
+}
+
+// if (process.env.SOURCEFOURTH_URL) {
+//   // the application is executed on Heroku ... use the postgres database
+//   sequelize = new Sequelize(process.env.SOURCEFOURTH_URL, {
+//     dialect:  'postgres',
+//     protocol: 'postgres',
+//     logging:  true //false
+//   });
+// } else {
+//   // the application is executed on the local machine
+//   sequelize = new Sequelize("postgres:///sourceFourth");
+// }
 
 
 passport.use(new LocalStrategy(function(username, pass, callback){
