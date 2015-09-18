@@ -14,13 +14,11 @@ router.get("/sources", function(req, res){
   .then(function(user){
     Source.findAll({where: {userId: user.id}})
     .then(function(sources, err){
-        //console.log(sources[0].dataValues);
-        var sourceArray = [];
+        var sourceArray = {};
         for (var i=0;i<sources.length; i++){
             var oneSource = sources[i].dataValues;
             sourceArray.push(oneSource)
         }
-        console.log(sourceArray);
         res.json(sourceArray);
         //console.log(err);
     })
