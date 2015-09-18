@@ -3,7 +3,7 @@ var sequelize = new Sequelize("postgres:///sourthForth");
 
 if (process.env.DATABASE_URL) {
   // the application is executed on Heroku ... use the postgres database
-  sequelize = new Sequelize(process.env.DATABASE_URL, {
+  sequelize = new Sequelize(process.env.SOURCEFOURTH_URL, {
     dialect:  'postgres',
     protocol: 'postgres',
     logging:  true //false
