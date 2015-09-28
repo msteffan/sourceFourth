@@ -14,7 +14,7 @@ router.get("/sources", function(req, res){
   .then(function(user){
     Source.findAll({where: {userId: user.id}})
     .then(function(sources, err){
-        var sourceArray = {};
+        var sourceArray = [];
         for (var i=0;i<sources.length; i++){
             var oneSource = sources[i].dataValues;
             sourceArray.push(oneSource)
